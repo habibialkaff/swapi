@@ -1,0 +1,33 @@
+@import 'layout';
+
+html, body {
+  width: 100%;
+  height: 100%;
+  margin: 0;
+  -webkit-overflow-scrolling: touch;
+  overflow-y: auto;
+  font-family: Roboto, sans-serif;
+}
+
+a {
+  text-decoration: none !important;
+  color: inherit !important;
+}
+
+.header {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 80px;
+  background-color: #D93B3D;
+  color: #FFFFFF;
+  z-index: 1000;
+}
+
+.content {
+  position: relative;
+  margin-top: 80px;
+}
+
+

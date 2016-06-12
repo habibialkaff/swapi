@@ -1,0 +1,15 @@
+{
+  "name": "azure_webjob",
+  "version": "1.0.0",
+  "description": "This folder contains script that is used to cache basic data to firebase.",
+  "main": "run.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "axios": "^0.12.0",
+    "firebase": "^3.0.4"
+  }
+}
