@@ -9,9 +9,6 @@ class Starship extends Component {
     super(props);
 
     this.goToDetail = this.goToDetail.bind(this);
-
-    this.state = {
-    };
   }
 
   goToDetail(key) {
@@ -20,7 +17,7 @@ class Starship extends Component {
 
   render() {
     return (
-      <div>
+      <div data-test="starship-list">
         {this.props.starships.map((item) => {
           return (<ListItem key={item.id} id={item.id} name={item.name} onItemClick={this.goToDetail} />);
         }) }

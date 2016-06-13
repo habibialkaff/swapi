@@ -9,9 +9,6 @@ class Vehicle extends Component {
     super(props);
 
     this.goToDetail = this.goToDetail.bind(this);
-
-    this.state = {
-    };
   }
 
   goToDetail(key) {
@@ -20,7 +17,7 @@ class Vehicle extends Component {
 
   render() {
     return (
-      <div>
+      <div data-test="vehicle-list">
         {this.props.vehicles.map((item) => {
           return (<ListItem key={item.id} id={item.id} name={item.name} onItemClick={this.goToDetail} />);
         }) }

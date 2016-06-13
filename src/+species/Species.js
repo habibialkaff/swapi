@@ -9,9 +9,6 @@ class Species extends Component {
     super(props);
 
     this.goToDetail = this.goToDetail.bind(this);
-
-    this.state = {
-    };
   }
 
   goToDetail(key) {
@@ -20,7 +17,7 @@ class Species extends Component {
 
   render() {
     return (
-      <div>
+      <div data-test="species-list">
         {this.props.species.map((item) => {
           return (<ListItem key={item.id} id={item.id} name={item.name} onItemClick={this.goToDetail} />);
         }) }

@@ -9,9 +9,6 @@ class People extends Component {
     super(props);
 
     this.goToDetail = this.goToDetail.bind(this);
-
-    this.state = {
-    };
   }
 
   goToDetail(key) {
@@ -20,12 +17,10 @@ class People extends Component {
 
   render() {
     return (
-      <div>
-        <div>
-          {this.props.people.map((item) => {
-            return (<ListItem key={item.id} id={item.id} name={item.name} onItemClick={this.goToDetail} />);
-          }) }
-        </div>
+      <div data-test="people-list">
+        {this.props.people.map((item) => {
+          return (<ListItem key={item.id} id={item.id} name={item.name} onItemClick={this.goToDetail} />);
+        }) }
       </div>
     );
   }

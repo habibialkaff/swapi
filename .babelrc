@@ -9,6 +9,9 @@
       "presets": [
         "react-hmre"
       ]
+    },
+    "production": {
+      "plugins": ["react-remove-properties"]
     }
   }
 }
