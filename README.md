@@ -9,4 +9,4 @@ This project is built using [react-slingshot](https://github.com/coryhouse/react
 
 
 #### Running the test
-To run the specs, please install and start [selenium-standalone](https://www.npmjs.com/package/selenium-standalone), then run "npm run test"
+To run the specs, please install and start [selenium-standalone](https://www.npmjs.com/package/selenium-standalone), start server locally with "npm start", then run "npm run test"
