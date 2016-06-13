@@ -21,8 +21,8 @@ class Species extends Component {
   render() {
     return (
       <div>
-        {Object.keys(this.props.species).map((key) => {
-          return (<ListItem key={key} id={key} name={this.props.species[key]} onItemClick={this.goToDetail} />);
+        {this.props.species.map((item) => {
+          return (<ListItem key={item.id} id={item.id} name={item.name} onItemClick={this.goToDetail} />);
         }) }
       </div>
     );
@@ -30,12 +30,12 @@ class Species extends Component {
 }
 
 Species.propTypes = {
-  species: PropTypes.object,
+  species: PropTypes.array,
   goTo: PropTypes.func
 };
 
 function mapStateToProps(state) {
-  const {species} = state.boot.data;
+  const {species} = state.boot.dataArr;
   return {
     species
   };

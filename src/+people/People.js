@@ -22,8 +22,8 @@ class People extends Component {
     return (
       <div>
         <div>
-          {Object.keys(this.props.people).map((key) => {
-            return (<ListItem key={key} id={key} name={this.props.people[key]} onItemClick={this.goToDetail} />);
+          {this.props.people.map((item) => {
+            return (<ListItem key={item.id} id={item.id} name={item.name} onItemClick={this.goToDetail} />);
           }) }
         </div>
       </div>
@@ -32,12 +32,12 @@ class People extends Component {
 }
 
 People.propTypes = {
-  people: PropTypes.object,
+  people: PropTypes.array,
   goTo: PropTypes.func
 };
 
 function mapStateToProps(state) {
-  const {people} = state.boot.data;
+  const {people} = state.boot.dataArr;
   return {
     people
   };

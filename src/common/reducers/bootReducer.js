@@ -6,7 +6,8 @@ export function bootReducer(state = initialState, action) {
     case BOOT.LOAD_SUCCESS:
       return {
         ...state,
-        data: action.data
+        data: action.data,
+        dataArr: action.dataArr
       };
     default:
       return state;

@@ -21,8 +21,8 @@ class Film extends Component {
   render() {
     return (
       <div>
-        {Object.keys(this.props.films).map((key) => {
-          return (<ListItem key={key} id={key} name={this.props.films[key]} onItemClick={this.goToDetail} />);
+        {this.props.films.map((item) => {
+          return (<ListItem key={item.id} id={item.id} name={item.name} onItemClick={this.goToDetail} />);
         }) }
       </div>
     );
@@ -30,12 +30,12 @@ class Film extends Component {
 }
 
 Film.propTypes = {
-  films: PropTypes.object,
+  films: PropTypes.array,
   goTo: PropTypes.func
 };
 
 function mapStateToProps(state) {
-  const {films} = state.boot.data;
+  const {films} = state.boot.dataArr;
   return {
     films
   };

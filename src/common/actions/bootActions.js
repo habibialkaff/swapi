@@ -17,13 +17,32 @@ export function loadAll() {
     ref.once('value')
       .then((dataSnapshot) => {
         const data = dataSnapshot.val();
-        Object.keys(data).forEach((key) => {
-          delete data[key].__internal;
+        const dataArr = {};
+
+        Object.keys(data).forEach((dataType) => {
+          const obj = data[dataType];
+          delete obj.__internal;
+
+          dataArr[dataType] = [];
+
+          Object.keys(obj).forEach((id) => {
+            dataArr[dataType].push({
+              id,
+              name: obj[id]
+            });
+          });
+
+          dataArr[dataType].sort((a, b) => {
+            if (a.name < b.name) return -1;
+            if (a.name > b.name) return 1;
+            return 0;
+          });
         });
 
         dispatch({
           type: BOOT.LOAD_SUCCESS,
-          data
+          data,
+          dataArr
         });
       });
   };

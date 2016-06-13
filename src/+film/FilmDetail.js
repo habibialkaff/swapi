@@ -50,7 +50,6 @@ class FilmDetail extends Component {
 
   render() {
     const {detail} = this.props;
-    // console.log(detail);
     return detail ? (
       <div>{Object.keys(detail).filter((key) => !this.skippedProps[key] && detail[key]).map((key) => {
         let content;

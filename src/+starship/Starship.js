@@ -21,8 +21,8 @@ class Starship extends Component {
   render() {
     return (
       <div>
-        {Object.keys(this.props.starships).map((key) => {
-          return (<ListItem key={key} id={key} name={this.props.starships[key]} onItemClick={this.goToDetail} />);
+        {this.props.starships.map((item) => {
+          return (<ListItem key={item.id} id={item.id} name={item.name} onItemClick={this.goToDetail} />);
         }) }
       </div>
     );
@@ -30,12 +30,12 @@ class Starship extends Component {
 }
 
 Starship.propTypes = {
-  starships: PropTypes.object,
+  starships: PropTypes.array,
   goTo: PropTypes.func
 };
 
 function mapStateToProps(state) {
-  const {starships} = state.boot.data;
+  const {starships} = state.boot.dataArr;
   return {
     starships
   };

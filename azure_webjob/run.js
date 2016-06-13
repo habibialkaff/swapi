@@ -16,36 +16,43 @@ function exit() {
   process.exit();
 }
 
-function query(url, prop, obj, resolve) {
+function getName(item, type) {
+  if (type === 'films') {
+    return `${item.episode_id}. ${item.title}`;
+  }
+
+  return item.name;
+}
+
+function query(url, type, obj, resolve) {
   axios.get(url)
     .then(({ data }) => {
       data.results.forEach((item) => {
         const temp = item.url.split('/');
         const key = temp[temp.length - 2];
-        const name = item[prop];
+        const name = getName(item, type);
         obj[key] = name;
       });
       if (data.next) {
-        query(data.next, prop, obj, resolve);
+        query(data.next, type, obj, resolve);
       } else {
         resolve();
       }
     });
 }
 
-function loadAndSave({name, prop}) {
+function loadAndSave({type}) {
   const promise = new Promise((resolve) => {
     const obj = {
-      '__internal': name
+      '__internal': type // This key is to force firebase to always return data as object
     };
 
     const swapiPromise = new Promise((swapiResolve) => {
-      query(`https://swapi.co/api/${name}/`, prop, obj, swapiResolve);
+      query(`https://swapi.co/api/${type}/`, type, obj, swapiResolve);
     });
 
     swapiPromise.then(() => {
-      rootRef.child(name).set(obj).then(() => {
-        // console.log(`${name} ${obj.$type}`);
+      rootRef.child(type).set(obj).then(() => {
         resolve();
       });
     });
@@ -56,12 +63,12 @@ function loadAndSave({name, prop}) {
 
 try {
   const data = [
-    { name: 'people', prop: 'name' },
-    { name: 'films', prop: 'title' },
-    { name: 'starships', prop: 'name' },
-    { name: 'vehicles', prop: 'name' },
-    { name: 'species', prop: 'name' },
-    { name: 'planets', prop: 'name' }
+    { type: 'people' },
+    { type: 'films' },
+    { type: 'starships' },
+    { type: 'vehicles' },
+    { type: 'species' },
+    { type: 'planets' }
   ];
 
   const promises = [];

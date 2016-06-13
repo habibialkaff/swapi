@@ -21,8 +21,8 @@ class Vehicle extends Component {
   render() {
     return (
       <div>
-        {Object.keys(this.props.vehicles).map((key) => {
-          return (<ListItem key={key} id={key} name={this.props.vehicles[key]} onItemClick={this.goToDetail} />);
+        {this.props.vehicles.map((item) => {
+          return (<ListItem key={item.id} id={item.id} name={item.name} onItemClick={this.goToDetail} />);
         }) }
       </div>
     );
@@ -30,12 +30,12 @@ class Vehicle extends Component {
 }
 
 Vehicle.propTypes = {
-  vehicles: PropTypes.object,
+  vehicles: PropTypes.array,
   goTo: PropTypes.func
 };
 
 function mapStateToProps(state) {
-  const {vehicles} = state.boot.data;
+  const {vehicles} = state.boot.dataArr;
   return {
     vehicles
   };

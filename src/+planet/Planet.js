@@ -21,8 +21,8 @@ class Planet extends Component {
   render() {
     return (
       <div>
-        {Object.keys(this.props.planets).map((key) => {
-          return (<ListItem key={key} id={key} name={this.props.planets[key]} onItemClick={this.goToDetail} />);
+        {this.props.planets.map((item) => {
+          return (<ListItem key={item.id} id={item.id} name={item.name} onItemClick={this.goToDetail} />);
         }) }
       </div>
     );
@@ -30,12 +30,12 @@ class Planet extends Component {
 }
 
 Planet.propTypes = {
-  planets: PropTypes.object,
+  planets: PropTypes.array,
   goTo: PropTypes.func
 };
 
 function mapStateToProps(state) {
-  const {planets} = state.boot.data;
+  const {planets} = state.boot.dataArr;
   return {
     planets
   };
