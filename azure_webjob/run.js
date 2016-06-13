@@ -52,6 +52,7 @@ function loadAndSave({type}) {
     });
 
     swapiPromise.then(() => {
+      console.log(`${type} ${Object.keys(obj).length}`);
       rootRef.child(type).set(obj).then(() => {
         resolve();
       });
