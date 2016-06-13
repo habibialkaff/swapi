@@ -6,3 +6,7 @@ The basic data from the API is cached in Firebase for faster loading. It is upda
 The live website is available [here](https://swapi-fire.firebaseapp.com/people). It uses Firebase Hosting.
 
 This project is built using [react-slingshot](https://github.com/coryhouse/react-slingshot) starter-kit with some modifications.
+
+
+#### Running the test
+To run the specs, please install and start [selenium-standalone](https://www.npmjs.com/package/selenium-standalone), then run "npm run test"
