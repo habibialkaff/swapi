@@ -7,7 +7,8 @@ export function bootReducer(state = initialState, action) {
       return {
         ...state,
         data: action.data,
-        dataArr: action.dataArr
+        dataArr: action.dataArr,
+        dataSearch: action.dataSearch
       };
     default:
       return state;

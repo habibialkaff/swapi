@@ -18,6 +18,7 @@ export function loadAll() {
       .then((dataSnapshot) => {
         const data = dataSnapshot.val();
         const dataArr = {};
+        const dataSearch = {};
 
         Object.keys(data).forEach((dataType) => {
           const obj = data[dataType];
@@ -26,9 +27,21 @@ export function loadAll() {
           dataArr[dataType] = [];
 
           Object.keys(obj).forEach((id) => {
+            const name = obj[id];
+
             dataArr[dataType].push({
               id,
-              name: obj[id]
+              name
+            });
+
+            if (!dataSearch[name]) {
+              dataSearch[name] = [];
+            }
+
+            dataSearch[name].push({
+              id,
+              name,
+              dataType
             });
           });
 
@@ -42,7 +55,8 @@ export function loadAll() {
         dispatch({
           type: BOOT.LOAD_SUCCESS,
           data,
-          dataArr
+          dataArr,
+          dataSearch
         });
       });
   };

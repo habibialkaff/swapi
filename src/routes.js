@@ -3,6 +3,7 @@ import { Route, IndexRedirect } from 'react-router';
 
 import { ROUTES } from './common/constants/routePaths';
 import {App} from './app';
+import {Search} from './+search';
 import {People, PeopleDetail} from './+people';
 import {Planet, PlanetDetail} from './+planet';
 import {Film, FilmDetail} from './+film';
@@ -13,6 +14,7 @@ import {Species, SpeciesDetail} from './+species';
 export default (
   <Route path="/" component={App}>
     <IndexRedirect to={`/${ROUTES.PEOPLE}`} />
+    <Route path={ROUTES.SEARCH} component={Search} />
     <Route path={`${ROUTES.PEOPLE}/:id`} component={PeopleDetail} />
     <Route path={ROUTES.PEOPLE} component={People} />
     <Route path={`${ROUTES.PLANET}/:id`} component={PlanetDetail} />
